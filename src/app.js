@@ -12,6 +12,7 @@ app.use(cors());
 app.use("/api/auth", require("@/routes/authRoute"));
 app.use("/api/categories", require("@/routes/categoryRoute"));
 app.use("/api/transactions", require("@/routes/transactionRoute"));
+app.use("/api/analytics", require("@/routes/analyticsRoute"));
 
 // Error Handling Middlewares
 app.use(notFound);
