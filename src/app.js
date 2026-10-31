@@ -9,7 +9,8 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/auth", require("@/routes/authRoutes"));
+app.use("/api/transactions", require("@/routes/transactionRoute"));
 
 // Error Handling Middlewares
 app.use(notFound);
