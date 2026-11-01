@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
+const User = require("@/models/User");
 
-const protect = (req, res, next) => {
+const protect = async (req, res, next) => {
   let token;
 
   if (
@@ -16,6 +17,12 @@ const protect = (req, res, next) => {
 
       // Attach user id to request object (excluding password)
       req.user = decoded.id;
+
+      const user = await User.findById(req.user).select("-password");
+
+      if (user.role === "admin") {
+        req.isAdmin = true;
+      }
       next();
     } catch (error) {
       return res.status(401).json({ message: "Not authorized, token failed" });

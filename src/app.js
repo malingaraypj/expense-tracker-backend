@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
+app.use("/api/admin", require("@/routes/admin/adminRoute"));
 app.use("/api/auth", require("@/routes/authRoute"));
 app.use("/api/categories", require("@/routes/categoryRoute"));
 app.use("/api/transactions", require("@/routes/transactionRoute"));

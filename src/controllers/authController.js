@@ -11,7 +11,7 @@ const generateToken = (userId) => {
 };
 
 const registerUser = asyncHandler(async (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, role } = req.body;
 
   const existingUser = await User.findOne({ email });
   if (existingUser) {
@@ -24,6 +24,7 @@ const registerUser = asyncHandler(async (req, res, next) => {
   const user = await User.create({
     username,
     email,
+    role: role,
     password: hashedPassword,
   });
 
