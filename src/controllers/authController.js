@@ -53,6 +53,12 @@ const loginUser = asyncHandler(async (req, res, next) => {
   res.json({
     success: true,
     token: generateToken(user._id),
+    user: {
+      id: user._id,
+      username: user.username,
+      email: user.email,
+      role: user.role,
+    },
   });
 });
 
